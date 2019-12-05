@@ -1,5 +1,6 @@
 package com.example.kotlinchat.Controllers
 
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinchat.Activity.LatestMessageActivity
@@ -28,7 +29,13 @@ class ControllerChatLog(val context: AppCompatActivity, val userModel: UserModel
 
     fun setMessagesList() {
         recyclerview_chat_log = context.findViewById(R.id.rec_chat_msg)
+        recyclerview_chat_log.setHasFixedSize(true)
+        recyclerview_chat_log.setItemViewCacheSize(20)
+        recyclerview_chat_log.setDrawingCacheEnabled(true)
+        recyclerview_chat_log.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH)
+
         listenForMessages()
+
         recyclerview_chat_log.adapter = adapter
     }
 
@@ -40,10 +47,7 @@ class ControllerChatLog(val context: AppCompatActivity, val userModel: UserModel
         val fromRef = FirebaseDatabase.getInstance().getReference("/messages/user-messages/$fromId/$toId").push()
         val toRef = FirebaseDatabase.getInstance().getReference("/messages/user-messages/$toId/$fromId").push()
         val chatMessage = ChatMessageModel(fromRef.key.toString(), msg, fromId, toId, System.currentTimeMillis() / 1000)
-        /*  reference.setValue(chatMessage)
-              .addOnSuccessListener {
-                  Log.d(TAG, "Saved our chat msg ${ref.key}")
-              }*/
+
         fromRef.setValue(chatMessage)
         toRef.setValue(chatMessage)
 

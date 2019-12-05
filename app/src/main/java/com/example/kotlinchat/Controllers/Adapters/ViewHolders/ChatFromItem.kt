@@ -1,5 +1,6 @@
 package com.example.kotlinchat.Controllers.Adapters.ViewHolders
 
+import android.view.Gravity
 import com.example.kotlinchat.Models.UserModel
 import com.example.kotlinchat.R
 import com.squareup.picasso.Picasso
@@ -14,7 +15,8 @@ class ChatFromItem(val text: String, val userModel: UserModel) : Item<GroupieVie
 
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
         viewHolder.itemView.txt_msg.text = text
-        Picasso.get().load(userModel.profileImageUrl).into(viewHolder.itemView.img_user)
+        Picasso.get().load(userModel.profileImageUrl).resize(1050,700)
+            .centerCrop(Gravity.CENTER).into(viewHolder.itemView.img_user)
     }
 
 }
