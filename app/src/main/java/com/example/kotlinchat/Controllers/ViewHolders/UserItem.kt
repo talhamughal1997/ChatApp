@@ -1,4 +1,4 @@
-package com.example.kotlinchat.Controllers.Adapters.ViewHolders
+package com.example.kotlinchat.Controllers.ViewHolders
 
 import com.example.kotlinchat.Models.UserModel
 import com.example.kotlinchat.R

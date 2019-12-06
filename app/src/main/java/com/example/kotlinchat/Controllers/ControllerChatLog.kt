@@ -3,9 +3,8 @@ package com.example.kotlinchat.Controllers
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.example.kotlinchat.Activity.LatestMessageActivity
-import com.example.kotlinchat.Controllers.Adapters.ViewHolders.ChatFromItem
-import com.example.kotlinchat.Controllers.Adapters.ViewHolders.ChatToItem
+import com.example.kotlinchat.Controllers.ViewHolders.ChatFromItem
+import com.example.kotlinchat.Controllers.ViewHolders.ChatToItem
 import com.example.kotlinchat.Models.ChatMessageModel
 import com.example.kotlinchat.Models.UserModel
 import com.example.kotlinchat.R

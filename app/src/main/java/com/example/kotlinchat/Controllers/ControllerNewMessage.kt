@@ -2,13 +2,12 @@ package com.example.kotlinchat.Controllers
 
 import android.content.Intent
 import android.util.Log
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinchat.Activity.ChatLogActivity
-import com.example.kotlinchat.Controllers.Adapters.ViewHolders.UserItem
+import com.example.kotlinchat.Controllers.ViewHolders.UserItem
 import com.example.kotlinchat.Models.UserModel
 import com.example.kotlinchat.R
 import com.example.kotlinchat.Utils.Common
@@ -16,11 +15,8 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.squareup.picasso.Picasso
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
-import com.xwray.groupie.Item
-import kotlinx.android.synthetic.main.user_list_item.view.*
 
 class ControllerNewMessage(val context: AppCompatActivity) {
 
