@@ -9,6 +9,7 @@ import com.example.kotlinchat.Controllers.Adapters.ViewHolders.ChatToItem
 import com.example.kotlinchat.Models.ChatMessageModel
 import com.example.kotlinchat.Models.UserModel
 import com.example.kotlinchat.R
+import com.example.kotlinchat.Utils.CurrentUser
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
@@ -74,7 +75,7 @@ class ControllerChatLog(val context: AppCompatActivity, val userModel: UserModel
                 val chatMsg = p0.getValue(ChatMessageModel::class.java)
                 if (chatMsg != null) {
                     if (chatMsg.fromId == FirebaseAuth.getInstance().uid) {
-                        val currentUser = LatestMessageActivity.currentUser?: return
+                        val currentUser = CurrentUser.user?: return
                         adapter.add(ChatFromItem(chatMsg.text, currentUser))
                         adapter.notifyItemInserted(adapter.itemCount - 1)
                         recyclerview_chat_log.scrollToPosition(adapter.itemCount - 1)
