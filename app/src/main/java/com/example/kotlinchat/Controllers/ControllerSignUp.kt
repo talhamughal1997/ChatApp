@@ -82,7 +82,7 @@ class ControllerSignUp(context: AppCompatActivity) {
                 mEdtxtEmail.setError("User Already Exist")
                 mEdtxtEmail.requestFocus()
             } catch (e: Exception) {
-                Log.e(TAG, e.message)
+                e.message?.let { Log.e(TAG, it) }
             }
 
         }
@@ -95,7 +95,7 @@ class ControllerSignUp(context: AppCompatActivity) {
             if (it.isSuccessful) {
                 Log.d(TAG, "signInWithEmail:success")
                 val user = auth.currentUser
-                uploadImageToFirebase()
+//                uploadImageToFirebase()
 
             } else {
                 getSignUpError(it)
@@ -120,10 +120,10 @@ class ControllerSignUp(context: AppCompatActivity) {
             mEdtxtPswd.setError("Empty User Name!!")
             return false
         }
-        if (!::selectedPhotoUri.isInitialized) {
+      /*  if (!::selectedPhotoUri.isInitialized) {
             Toast.makeText(context, "Plz Select Profile Photo", Toast.LENGTH_LONG).show()
             return false
-        }
+        }*/
         return true
     }
 
@@ -134,7 +134,7 @@ class ControllerSignUp(context: AppCompatActivity) {
     }
 
     fun getBitmapOfSelectedPhoto(intent: Intent): Bitmap {
-        selectedPhotoUri = intent.data
+        selectedPhotoUri = intent.data!!
         bitmap = MediaStore.Images.Media.getBitmap(context.contentResolver, selectedPhotoUri)
         bitmap = getResizedBitmap(bitmap,1024)
         return bitmap

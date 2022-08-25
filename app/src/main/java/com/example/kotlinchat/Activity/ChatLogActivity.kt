@@ -21,7 +21,7 @@ class ChatLogActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_log)
         viewInits()
-        userModel = intent.getParcelableExtra(ControllerNewMessage.USER_KEY)
+        userModel = intent.getParcelableExtra(ControllerNewMessage.USER_KEY)!!
         controller = ControllerChatLog(this, userModel)
         supportActionBar?.title = userModel.username
         controller.setMessagesList()
