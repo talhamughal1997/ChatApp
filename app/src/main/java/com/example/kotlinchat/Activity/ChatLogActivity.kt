@@ -36,7 +36,7 @@ class ChatLogActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btn_send -> {
-                controller.performSendMsg(userModel.uid, mEdtxtMsg.text.toString())
+                controller.performSendMsg(mEdtxtMsg.text.toString())
                 mEdtxtMsg.setText("")
             }
         }

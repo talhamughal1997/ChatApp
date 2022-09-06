@@ -16,7 +16,6 @@ import kotlinx.android.synthetic.main.latest_message_row.view.*
 
 class LatestMessageRow(val chatMessage: ChatMessageModel): Item<GroupieViewHolder>() {
   var chatPartnerUser: UserModel? = null
-
   override fun bind(viewHolder: GroupieViewHolder, position: Int) {
     viewHolder.itemView.message_textview_latest_message.text = chatMessage.text
 

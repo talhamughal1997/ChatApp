@@ -4,7 +4,6 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.example.kotlinchat.Activity.LatestMessageActivity
 import com.example.kotlinchat.Controllers.ViewHolders.ChatFromItem
 import com.example.kotlinchat.Controllers.ViewHolders.ChatToItem
 import com.example.kotlinchat.Models.ChatMessageModel
@@ -27,9 +26,14 @@ class ControllerChatLog(val context: AppCompatActivity, val userModel: UserModel
 
     lateinit var recyclerview_chat_log: RecyclerView
     val adapter = GroupAdapter<GroupieViewHolder>()
+
     val fromId = FirebaseAuth.getInstance().uid
+    var toId: String? = null
     var toUser: UserModel? = null
 
+    init {
+        toId = userModel.uid
+    }
 
     fun setMessagesList() {
         recyclerview_chat_log = context.findViewById(R.id.rec_chat_msg)
@@ -43,31 +47,57 @@ class ControllerChatLog(val context: AppCompatActivity, val userModel: UserModel
         recyclerview_chat_log.adapter = adapter
     }
 
-    fun performSendMsg(toId: String, msg: String) {
+    fun performSendMsg(msg: String) {
 
-        if (fromId == null) {
-            return
-        }
-        val fromRef = FirebaseDatabase.getInstance().getReference("/messages/user-messages/$fromId/$toId").push()
-        val toRef = FirebaseDatabase.getInstance().getReference("/messages/user-messages/$toId/$fromId").push()
-        val chatMessage = ChatMessageModel(fromRef.key.toString(), msg, fromId, toId, System.currentTimeMillis() / 1000)
 
-        fromRef.setValue(chatMessage)
-        toRef.setValue(chatMessage)
+        if (fromId == null) return
+
+
+        //    val reference = FirebaseDatabase.getInstance().getReference("/messages").push()
+        val reference =
+            FirebaseDatabase.getInstance().getReference("/user-messages/$fromId/$toId").push()
+
+        val toReference =
+            FirebaseDatabase.getInstance().getReference("/user-messages/$toId/$fromId").push()
+
+        val chatMessage = ChatMessageModel(
+            reference.key!!,
+            msg,
+            fromId ?: "",
+            toId ?: "",
+            System.currentTimeMillis() / 1000
+        )
+
+        reference.setValue(chatMessage)
+            .addOnSuccessListener {
+                Log.d(TAG, "Saved our chat message: ${reference.key}")
+                recyclerview_chat_log.scrollToPosition(adapter.itemCount - 1)
+            }
+
+        toReference.setValue(chatMessage)
+
+        val latestMessageRef =
+            FirebaseDatabase.getInstance().getReference("/latest-messages/$fromId/$toId")
+        latestMessageRef.setValue(chatMessage)
+
+        val latestMessageToRef =
+            FirebaseDatabase.getInstance().getReference("/latest-messages/$toId/$fromId")
+        latestMessageToRef.setValue(chatMessage)
 
     }
 
 
     private fun listenForMessages() {
-        val toId = userModel.uid
-        val ref = FirebaseDatabase.getInstance().getReference("/messages/user-messages/$fromId/$toId")
+
+        val ref = FirebaseDatabase.getInstance().getReference("/user-messages/$fromId/$toId")
+
         ref.addChildEventListener(object : ChildEventListener {
             override fun onCancelled(p0: DatabaseError) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
             }
 
             override fun onChildMoved(p0: DataSnapshot, p1: String?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
             }
 
             override fun onChildChanged(p0: DataSnapshot, p1: String?) {
@@ -93,7 +123,7 @@ class ControllerChatLog(val context: AppCompatActivity, val userModel: UserModel
             }
 
             override fun onChildRemoved(p0: DataSnapshot) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
             }
 
         })
