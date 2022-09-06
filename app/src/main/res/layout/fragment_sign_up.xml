@@ -22,7 +22,7 @@
                 android:layout_marginTop="30dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_bold"
+                android:fontFamily="@font/poppins_regular"
                 android:text="Sign Up"
                 android:textSize="26sp"
                 android:textColor="@color/colorPrimaryDark"
@@ -69,7 +69,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="20dp"
-                    android:fontFamily="@font/montserrat_light"
+                    android:fontFamily="@font/poppins_regular"
                     android:hint="User Name"
                     android:inputType="textPersonName"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -86,7 +86,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="20dp"
-                    android:fontFamily="@font/montserrat_light"
+                    android:fontFamily="@font/poppins_regular"
                     android:hint="example@yahoo.com"
                     android:inputType="textEmailAddress"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -104,7 +104,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="20dp"
-                    android:fontFamily="@font/montserrat_light"
+                    android:fontFamily="@font/poppins_regular"
                     android:hint="Password"
                     android:inputType="textPassword"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -118,7 +118,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@drawable/login_btn_bg"
-            android:fontFamily="@font/montserrat_bold"
+            android:fontFamily="@font/poppins_regular"
             android:text="Register"
             android:textColor="@android:color/white"
             android:textStyle="bold"

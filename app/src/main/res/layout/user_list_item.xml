@@ -17,7 +17,7 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-            android:fontFamily="@font/montserrat_lightitalic"
+            android:fontFamily="@font/poppins_regular"
             android:id="@+id/uname"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
