@@ -66,6 +66,7 @@
      <item name="layout_constraintWidth_percent">0.8</item>
      <item name="android:textStyle">normal</item>
      <item name="android:textColorHint">@color/colorGrayLight</item>
+     <item name="android:inputType">textPersonName</item>
      <item name="helperTextTextAppearance">@style/HelperTextAppearance</item>
      <item name="hintTextAppearance">@style/HintTextAppearance</item>
      <item name="boxStrokeColor">@color/colorAccent</item>

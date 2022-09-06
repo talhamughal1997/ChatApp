@@ -7,8 +7,8 @@
         <entry key="app/src/main/res/font/app_font.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25815217391304346" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_sign_in.xml" value="0.20707070707070707" />
-        <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_sign_in.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.18924407958984377" />
       </map>
     </option>
   </component>

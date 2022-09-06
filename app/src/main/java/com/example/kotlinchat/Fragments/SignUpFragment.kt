@@ -42,11 +42,11 @@ class SignUpFragment : Fragment(), View.OnClickListener {
     }
 
     fun viewsInits() {
-        mEdtxtUName = mainView.findViewById(R.id.signup_edtxt_uname)
-        mEdtxtEmail = mainView.findViewById(R.id.signup_edtxt_email)
-        mEdtxtPswd = mainView.findViewById(R.id.signup_edtxt_pswd)
-        mButtonRegister = mainView.findViewById(R.id.signup_btn_register)
-        mUploadProfileImg = mainView.findViewById(R.id.signup_upload_img)
+        mEdtxtUName = mainView.findViewById(R.id.et_username)
+        mEdtxtEmail = mainView.findViewById(R.id.et_email)
+        mEdtxtPswd = mainView.findViewById(R.id.et_pswd)
+        mButtonRegister = mainView.findViewById(R.id.btn_sign_up)
+        mUploadProfileImg = mainView.findViewById(R.id.iv_profile)
     }
 
     fun varInits() {
@@ -63,11 +63,11 @@ class SignUpFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.signup_btn_register -> {
+            R.id.btn_sign_up -> {
                controller.setSignUp(mEdtxtUName, mEdtxtEmail, mEdtxtPswd)
 
             }
-            R.id.signup_upload_img -> {
+            R.id.iv_profile -> {
                 controller.selectPhotoFromGallery(this)
             }
         }
