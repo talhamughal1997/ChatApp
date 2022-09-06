@@ -95,7 +95,7 @@ class ControllerSignUp(context: AppCompatActivity) {
             if (it.isSuccessful) {
                 Log.d(TAG, "signInWithEmail:success")
                 val user = auth.currentUser
-//                uploadImageToFirebase()
+                uploadImageToFirebase()
 
             } else {
                 getSignUpError(it)
