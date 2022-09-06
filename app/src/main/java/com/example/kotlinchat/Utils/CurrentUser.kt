@@ -11,6 +11,10 @@ object CurrentUser {
 
     var user: UserModel? = null
 
+    init {
+        fetchCurrentUser()
+    }
+
     private fun fetchCurrentUser() {
         val uid = FirebaseAuth.getInstance().uid
         val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
