@@ -1,8 +1,10 @@
 package com.example.kotlinchat.Controllers
 
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.kotlinchat.Activity.LatestMessageActivity
 import com.example.kotlinchat.Controllers.ViewHolders.ChatFromItem
 import com.example.kotlinchat.Controllers.ViewHolders.ChatToItem
 import com.example.kotlinchat.Models.ChatMessageModel
@@ -26,6 +28,8 @@ class ControllerChatLog(val context: AppCompatActivity, val userModel: UserModel
     lateinit var recyclerview_chat_log: RecyclerView
     val adapter = GroupAdapter<GroupieViewHolder>()
     val fromId = FirebaseAuth.getInstance().uid
+    var toUser: UserModel? = null
+
 
     fun setMessagesList() {
         recyclerview_chat_log = context.findViewById(R.id.rec_chat_msg)
@@ -71,19 +75,21 @@ class ControllerChatLog(val context: AppCompatActivity, val userModel: UserModel
             }
 
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {
-                val chatMsg = p0.getValue(ChatMessageModel::class.java)
-                if (chatMsg != null) {
-                    if (chatMsg.fromId == FirebaseAuth.getInstance().uid) {
-                        val currentUser = CurrentUser.user?: return
-                        adapter.add(ChatFromItem(chatMsg.text, currentUser))
-                        adapter.notifyItemInserted(adapter.itemCount - 1)
-                        recyclerview_chat_log.scrollToPosition(adapter.itemCount - 1)
+                val chatMessage = p0.getValue(ChatMessageModel::class.java)
+
+                if (chatMessage != null) {
+                    Log.d(TAG, chatMessage.text)
+
+                    if (chatMessage.fromId == FirebaseAuth.getInstance().uid) {
+                        val currentUser = CurrentUser.user ?: return
+                        adapter.add(ChatFromItem(chatMessage.text, currentUser))
                     } else {
-                        adapter.add(ChatToItem(chatMsg.text, userModel))
-                        adapter.notifyItemInserted(adapter.itemCount - 1)
-                        recyclerview_chat_log.scrollToPosition(adapter.itemCount - 1)
+                        adapter.add(ChatToItem(chatMessage.text, toUser!!))
                     }
                 }
+
+                recyclerview_chat_log.scrollToPosition(adapter.itemCount - 1)
+
             }
 
             override fun onChildRemoved(p0: DataSnapshot) {

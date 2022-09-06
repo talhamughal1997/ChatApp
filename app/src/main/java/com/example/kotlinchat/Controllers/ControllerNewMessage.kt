@@ -11,6 +11,7 @@ import com.example.kotlinchat.Controllers.ViewHolders.UserItem
 import com.example.kotlinchat.Models.UserModel
 import com.example.kotlinchat.R
 import com.example.kotlinchat.Utils.Common
+import com.example.kotlinchat.Utils.CurrentUser
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -42,7 +43,7 @@ class ControllerNewMessage(val context: AppCompatActivity) {
                 p0.children.forEach {
                     Log.d("NewMessage", it.toString())
                     val users = it.getValue(UserModel::class.java)
-                    if (users != null) {
+                    if (users != null && users.uid != CurrentUser.user?.uid) {
                         adapter.add(UserItem(users))
                     }
                     progressDialog.hide()
