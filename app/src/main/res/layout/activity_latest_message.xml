@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/tv_messages"
-        style="@style/H2"
+        style="@style/H1"
         android:text="Messages"
         android:layout_marginTop="50dp"
         app:layout_constraintStart_toStartOf="parent"
