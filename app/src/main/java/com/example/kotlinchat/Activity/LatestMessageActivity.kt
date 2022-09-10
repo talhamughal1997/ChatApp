@@ -13,6 +13,7 @@ import com.example.kotlinchat.Models.ChatMessageModel
 import com.example.kotlinchat.Models.UserModel
 import com.example.kotlinchat.R
 import com.example.kotlinchat.Utils.Common
+import com.example.kotlinchat.Utils.CurrentUser
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.xwray.groupie.Group
@@ -29,6 +30,7 @@ class LatestMessageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_latest_message)
+        CurrentUser.fetchCurrentUser()
         clickListeners()
 
         recyclerview_latest_messages.adapter = adapter

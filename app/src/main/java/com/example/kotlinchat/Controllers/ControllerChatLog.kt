@@ -62,7 +62,7 @@ class ControllerChatLog(val context: AppCompatActivity, val userModel: UserModel
 
         val chatMessage = ChatMessageModel(
             reference.key!!,
-            msg,
+            msg.trim(),
             fromId ?: "",
             toId ?: "",
             System.currentTimeMillis() / 1000
@@ -112,9 +112,9 @@ class ControllerChatLog(val context: AppCompatActivity, val userModel: UserModel
 
                     if (chatMessage.fromId == FirebaseAuth.getInstance().uid) {
                         val currentUser = CurrentUser.user ?: return
-                        adapter.add(ChatFromItem(chatMessage.text, currentUser))
+                        adapter.add(ChatToItem(chatMessage.text, currentUser))
                     } else {
-                        adapter.add(ChatToItem(chatMessage.text, toUser!!))
+                        adapter.add(ChatFromItem(chatMessage.text, userModel))
                     }
                 }
 
