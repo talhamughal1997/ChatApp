@@ -5,6 +5,7 @@ import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kotlinchat.R
 import com.example.kotlinchat.Utils.Common
+import com.example.kotlinchat.Utils.CurrentUser
 import com.google.firebase.auth.FirebaseAuth
 
 class SplashActivity : AppCompatActivity() {
@@ -14,6 +15,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         supportActionBar?.hide()
+        CurrentUser.fetchCurrentUser()
 
         val handler = Handler()
         handler.postDelayed(Runnable {
