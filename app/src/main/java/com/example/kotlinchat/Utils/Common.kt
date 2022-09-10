@@ -3,16 +3,16 @@ package com.example.kotlinchat.Utils
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.example.kotlinchat.Models.UserModel
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.*
+import java.util.concurrent.TimeUnit
+import kotlin.math.absoluteValue
 
 object Common {
 
@@ -40,6 +40,43 @@ object Common {
             setView(dialogView)
             setCancelable(false)
         }.create()
+    }
+
+    fun covertTimeToText(timeInMillis: Long?): String? {
+        var convTime: String? = null
+        val prefix = ""
+        val suffix = "ago"
+        try {
+            val dateFormat = Calendar.getInstance()
+            val pasTime: Date = dateFormat.also { it.timeInMillis = timeInMillis?:0 }.time
+            val nowTime = Date()
+            val dateDiff: Long = nowTime.getTime() - pasTime.getTime()
+            val second: Long = TimeUnit.MILLISECONDS.toSeconds(dateDiff).absoluteValue
+            val minute: Long = TimeUnit.MILLISECONDS.toMinutes(dateDiff).absoluteValue
+            val hour: Long = TimeUnit.MILLISECONDS.toHours(dateDiff).absoluteValue
+            val day: Long = TimeUnit.MILLISECONDS.toDays(dateDiff).absoluteValue
+            if (second < 60) {
+                convTime = "$second sec $suffix"
+            } else if (minute < 60) {
+                convTime = "$minute min $suffix"
+            } else if (hour < 24) {
+                convTime = "$hour hr $suffix"
+            } else if (day >= 7) {
+                convTime = if (day > 360) {
+                    (day / 360).toString() + " Years " + suffix
+                } else if (day > 30) {
+                    (day / 30).toString() + " Months " + suffix
+                } else {
+                    (day / 7).toString() + " Week " + suffix
+                }
+            } else if (day < 7) {
+                convTime = "$day Days $suffix"
+            }
+        } catch (e: ParseException) {
+            e.printStackTrace()
+            Log.e("ConvTimeE", e.message.toString())
+        }
+        return convTime
     }
 
 }

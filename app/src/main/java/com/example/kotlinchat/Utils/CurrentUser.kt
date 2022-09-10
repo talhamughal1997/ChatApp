@@ -11,7 +11,7 @@ object CurrentUser {
 
     var user: UserModel? = null
 
-    private fun fetchCurrentUser() {
+     fun fetchCurrentUser() {
         val uid = FirebaseAuth.getInstance().uid
         val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
         ref.addListenerForSingleValueEvent(object : ValueEventListener {

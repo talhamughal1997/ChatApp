@@ -5,18 +5,21 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinchat.Activity.ChatLogActivity
 import com.example.kotlinchat.Controllers.ViewHolders.UserItem
 import com.example.kotlinchat.Models.UserModel
 import com.example.kotlinchat.R
 import com.example.kotlinchat.Utils.Common
+import com.example.kotlinchat.Utils.CurrentUser
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
+import kotlinx.android.synthetic.main.activity_latest_message.*
 
 class ControllerNewMessage(val context: AppCompatActivity) {
 
@@ -29,6 +32,8 @@ class ControllerNewMessage(val context: AppCompatActivity) {
 
     fun setRecyclerView() {
         recyclerView = context.findViewById(R.id.rec_new_msg)
+        recyclerView.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+
         progressDialog = Common.getProgressDialog(context)
         fetchUsers()
     }
@@ -42,7 +47,7 @@ class ControllerNewMessage(val context: AppCompatActivity) {
                 p0.children.forEach {
                     Log.d("NewMessage", it.toString())
                     val users = it.getValue(UserModel::class.java)
-                    if (users != null) {
+                    if (users != null && users.uid != CurrentUser.user?.uid) {
                         adapter.add(UserItem(users))
                     }
                     progressDialog.hide()

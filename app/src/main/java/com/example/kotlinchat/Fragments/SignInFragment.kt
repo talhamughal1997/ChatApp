@@ -34,10 +34,10 @@ class SignInFragment : Fragment(), View.OnClickListener {
     }
 
     fun viewsInit() {
-        mTxtSignUp = mainView.findViewById(R.id.login_txtSignUp)
-        mEdtxtEmail = mainView.findViewById(R.id.signin_edtxt_email)
-        mEdtxtPswd = mainView.findViewById(R.id.signin_edtxt_pswd)
-        mButtonSignIn = mainView.findViewById(R.id.btn_login)
+        mTxtSignUp = mainView.findViewById(R.id.tv_sign_up)
+        mEdtxtEmail = mainView.findViewById(R.id.et_email)
+        mEdtxtPswd = mainView.findViewById(R.id.et_pswd)
+        mButtonSignIn = mainView.findViewById(R.id.btn_sign_in)
         controller = ControllerSignIn(this.activity as AppCompatActivity)
     }
 
@@ -48,14 +48,14 @@ class SignInFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.login_txtSignUp -> activity?.let {
+            R.id.tv_sign_up -> activity?.let {
                 FragmentUtils.replaceFragment(
                     it,
                     SignUpFragment(),
                     R.id.login_container, true
                 )
             }
-            R.id.btn_login -> {
+            R.id.btn_sign_in -> {
                 controller.setSignIn(mEdtxtEmail, mEdtxtPswd)
 
             }

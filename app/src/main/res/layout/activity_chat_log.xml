@@ -6,41 +6,64 @@
     android:layout_height="match_parent"
     tools:context=".Activity.ChatLogActivity">
 
+    <EditText
+        android:id="@+id/edtxt_msg"
+        style="@style/H5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:hint="Type message"
+        android:inputType="textMultiLine"
+        android:maxHeight="150dp"
+        android:maxLength="250"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="12dp"
+        android:textAlignment="textStart"
+        app:layout_constraintBottom_toBottomOf="@id/message_view"
+        app:layout_constraintEnd_toStartOf="@id/btn_send"
+        app:layout_constraintStart_toStartOf="@id/message_view" />
+
+    <ImageView
+        android:id="@+id/btn_send"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:padding="8dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_send_message"
+        app:layout_constraintBottom_toBottomOf="@+id/edtxt_msg"
+        app:layout_constraintEnd_toEndOf="@id/message_view"
+        app:layout_constraintTop_toTopOf="@id/edtxt_msg"
+        app:tint="@color/colorAccent" />
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/H2"
+        android:layout_height="0dp"
+        android:text="User Name"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <View
+        android:id="@+id/message_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rec_chat_msg"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:padding="10dp"
+        android:layout_marginTop="10dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@id/edtxt_msg"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <EditText
-        android:id="@+id/edtxt_msg"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_margin="10dp"
-        android:hint="Message ..."
-        android:textColorHint="@color/colorPrimary"
-        android:textSize="18sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_send"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btn_send"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="send"
-        android:textSize="12sp"
-        android:textColor="@android:color/white"
-        android:background="@drawable/login_btn_bg"
-        app:layout_constraintBottom_toBottomOf="@+id/edtxt_msg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/edtxt_msg" />
+        app:layout_constraintTop_toBottomOf="@id/title" />
 </androidx.constraintlayout.widget.ConstraintLayout>

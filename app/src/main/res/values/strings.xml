@@ -3,4 +3,18 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="register">Register</string>
+    <string name="you_and_your_friends_always_connected">You and Your Friends always Connected</string>
+    <string name="email">Email</string>
+    <string name="login">Login</string>
+    <string name="remember_to_get_up_stretch_once_in_a_while_your_friends_at_chat"><![CDATA[Remember to get up & stretch once in a while - your friends at chat]]></string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="sign_up_here">Sign up here</string>
+    <string name="user_name">User Name</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="compose">Compose</string>
+    <string name="users">Users</string>
 </resources>

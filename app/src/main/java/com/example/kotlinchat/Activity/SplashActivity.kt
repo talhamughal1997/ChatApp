@@ -5,6 +5,7 @@ import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kotlinchat.R
 import com.example.kotlinchat.Utils.Common
+import com.example.kotlinchat.Utils.CurrentUser
 import com.google.firebase.auth.FirebaseAuth
 
 class SplashActivity : AppCompatActivity() {

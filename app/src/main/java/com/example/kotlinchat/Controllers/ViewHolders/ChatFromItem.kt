@@ -15,8 +15,6 @@ class ChatFromItem(val text: String, val userModel: UserModel) : Item<GroupieVie
 
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
         viewHolder.itemView.txt_msg.text = text
-        Picasso.get().load(userModel.profileImageUrl).resize(1050,700)
-            .centerCrop(Gravity.CENTER).into(viewHolder.itemView.img_user)
     }
 
 }
