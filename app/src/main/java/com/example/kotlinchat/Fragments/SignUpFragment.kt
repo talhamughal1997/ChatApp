@@ -25,6 +25,7 @@ class SignUpFragment : Fragment(), View.OnClickListener {
     lateinit var mEdtxtUName: EditText
     lateinit var mEdtxtEmail: EditText
     lateinit var mEdtxtPswd: EditText
+    lateinit var mTxtViewLogin: TextView
     lateinit var mButtonRegister: Button
     lateinit var mUploadProfileImg: CircleImageView
 
@@ -45,6 +46,7 @@ class SignUpFragment : Fragment(), View.OnClickListener {
         mEdtxtUName = mainView.findViewById(R.id.et_username)
         mEdtxtEmail = mainView.findViewById(R.id.et_email)
         mEdtxtPswd = mainView.findViewById(R.id.et_pswd)
+        mTxtViewLogin = mainView.findViewById(R.id.tv_sign_in)
         mButtonRegister = mainView.findViewById(R.id.btn_sign_up)
         mUploadProfileImg = mainView.findViewById(R.id.iv_profile)
     }
@@ -59,12 +61,17 @@ class SignUpFragment : Fragment(), View.OnClickListener {
     fun viewsListeners() {
         mButtonRegister.setOnClickListener(this)
         mUploadProfileImg.setOnClickListener(this)
+        mTxtViewLogin.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btn_sign_up -> {
                controller.setSignUp(mEdtxtUName, mEdtxtEmail, mEdtxtPswd)
+
+            }
+            R.id.tv_sign_in -> {
+               requireActivity().supportFragmentManager.popBackStack()
 
             }
             R.id.iv_profile -> {
