@@ -5,6 +5,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinchat.Activity.ChatLogActivity
 import com.example.kotlinchat.Controllers.ViewHolders.UserItem
@@ -18,6 +19,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
+import kotlinx.android.synthetic.main.activity_latest_message.*
 
 class ControllerNewMessage(val context: AppCompatActivity) {
 
@@ -30,6 +32,8 @@ class ControllerNewMessage(val context: AppCompatActivity) {
 
     fun setRecyclerView() {
         recyclerView = context.findViewById(R.id.rec_new_msg)
+        recyclerView.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+
         progressDialog = Common.getProgressDialog(context)
         fetchUsers()
     }
