@@ -44,7 +44,7 @@ object Common {
     fun covertTimeToText(timeInMillis: Long?): String? {
         var convTime: String? = null
         val prefix = ""
-        val suffix = "Ago"
+        val suffix = "ago"
         try {
             val dateFormat = Calendar.getInstance()
             val pasTime: Date = dateFormat.also { it.timeInMillis = timeInMillis?:0 }.time
@@ -55,11 +55,11 @@ object Common {
             val hour: Long = TimeUnit.MILLISECONDS.toHours(dateDiff)
             val day: Long = TimeUnit.MILLISECONDS.toDays(dateDiff)
             if (second < 60) {
-                convTime = "$second Seconds $suffix"
+                convTime = "$second sec $suffix"
             } else if (minute < 60) {
-                convTime = "$minute Minutes $suffix"
+                convTime = "$minute min $suffix"
             } else if (hour < 24) {
-                convTime = "$hour Hours $suffix"
+                convTime = "$hour hr $suffix"
             } else if (day >= 7) {
                 convTime = if (day > 360) {
                     (day / 360).toString() + " Years " + suffix

@@ -12,6 +12,8 @@
         android:layout_marginLeft="12dp"
         android:background="@drawable/from_bubble"
         android:maxWidth="240dp"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
         android:paddingVertical="10dp"
         android:textAlignment="textStart"
         android:paddingHorizontal="20dp"

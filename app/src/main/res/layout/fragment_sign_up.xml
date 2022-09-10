@@ -110,6 +110,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintWidth_percent="0.6"
         android:text="@string/sign_up"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
         style="@style/DefaultButtonStyle"
         app:layout_constraintTop_toBottomOf="@id/textinput_pswd"
         app:layout_constraintStart_toStartOf="parent"

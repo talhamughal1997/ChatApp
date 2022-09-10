@@ -5,10 +5,11 @@
       <map>
         <entry key="app/src/main/res/drawable/from_bubble.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/rounded_button.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/speech_bubble.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/to_bubble.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/txt_msg_bg.xml" value="0.1" />
         <entry key="app/src/main/res/font/app_font.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_chat_log.xml" value="0.16210739614994935" />
+        <entry key="app/src/main/res/layout/activity_chat_log.xml" value="0.2016143798828125" />
         <entry key="app/src/main/res/layout/activity_latest_message.xml" value="0.2006340579710145" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25815217391304346" />
         <entry key="app/src/main/res/layout/activity_new_message.xml" value="0.2006340579710145" />
