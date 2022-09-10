@@ -29,6 +29,7 @@ class LatestMessageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_latest_message)
+        clickListeners()
 
         recyclerview_latest_messages.adapter = adapter
         recyclerview_latest_messages.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
@@ -49,25 +50,6 @@ class LatestMessageActivity : AppCompatActivity() {
 
         verifyUserIsLoggedIn()
     }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.nav_menu, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item?.itemId) {
-            R.id.menu_new_msg -> {
-                Common.changeActivity(this, NewMessageActivity())
-            }
-            R.id.menu_sign_out -> {
-                FirebaseAuth.getInstance().signOut()
-                Common.changeActivity(this, LoginActivity(), true)
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
 
     private fun refreshRecyclerViewMessages() {
         adapter.clear()
@@ -105,13 +87,15 @@ class LatestMessageActivity : AppCompatActivity() {
     }
 
 
-//  private fun setupDummyRows() {
-//
-//
-//    adapter.add(LatestMessageRow())
-//    adapter.add(LatestMessageRow())
-//    adapter.add(LatestMessageRow())
-//  }
+    fun clickListeners(){
+        fab_compose.setOnClickListener {
+            Common.changeActivity(this, NewMessageActivity())
+        }
+        iv_logout.setOnClickListener{
+            FirebaseAuth.getInstance().signOut()
+            Common.changeActivity(this, LoginActivity(), true)
+        }
+    }
 
 
     private fun verifyUserIsLoggedIn() {
