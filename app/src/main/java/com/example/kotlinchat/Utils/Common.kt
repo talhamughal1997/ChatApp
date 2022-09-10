@@ -12,6 +12,7 @@ import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
+import kotlin.math.absoluteValue
 
 object Common {
 
@@ -50,10 +51,10 @@ object Common {
             val pasTime: Date = dateFormat.also { it.timeInMillis = timeInMillis?:0 }.time
             val nowTime = Date()
             val dateDiff: Long = nowTime.getTime() - pasTime.getTime()
-            val second: Long = TimeUnit.MILLISECONDS.toSeconds(dateDiff)
-            val minute: Long = TimeUnit.MILLISECONDS.toMinutes(dateDiff)
-            val hour: Long = TimeUnit.MILLISECONDS.toHours(dateDiff)
-            val day: Long = TimeUnit.MILLISECONDS.toDays(dateDiff)
+            val second: Long = TimeUnit.MILLISECONDS.toSeconds(dateDiff).absoluteValue
+            val minute: Long = TimeUnit.MILLISECONDS.toMinutes(dateDiff).absoluteValue
+            val hour: Long = TimeUnit.MILLISECONDS.toHours(dateDiff).absoluteValue
+            val day: Long = TimeUnit.MILLISECONDS.toDays(dateDiff).absoluteValue
             if (second < 60) {
                 convTime = "$second sec $suffix"
             } else if (minute < 60) {
